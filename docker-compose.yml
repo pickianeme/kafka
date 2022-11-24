@@ -1,61 +1,28 @@
-version: "3"
-volumes:
-  kafka_21_data:
-    driver: local
-  zookeeper1_data:
-    driver: local
-  kafka_22_data:
-    driver: local
-networks:
-  test-net:
-    driver: overlay
-    attachable: true
+version: "2"
+
 services:
   zookeeper:
-    image: 'bitnami/zookeeper:latest'
+    image: docker.io/bitnami/zookeeper:3.8
     ports:
-      - '2181:2181'
+      - "2181:2181"
+    volumes:
+      - "zookeeper_data:/bitnami"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
-    volumes:
-      - zookeeper1_data:/bitnami/zookeeper
-    networks:
-      - test-net
-  kafka1:
-    image: 'bitnami/kafka:latest'
+  kafka:
+    image: docker.io/bitnami/kafka:3.3
     ports:
-      - '9092:9092'
-      - '9093:9093'
+      - "9092:9092"
+    volumes:
+      - "kafka_data:/bitnami"
     environment:
-      - KAFKA_BROKER_ID=21
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
-      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://cb01.bu.ac.th:9092,EXTERNAL://cb01.bu.ac.th:9093
-      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
-    volumes:
-      - kafka_21_data:/bitnami/kafka
-    networks:
-      - test-net
     depends_on:
       - zookeeper
-  kafka2:
-    image: 'bitnami/kafka:latest'
-    ports:
-      - '9094:9094'
-      - '9095:9095'
-    environment:
-      - KAFKA_BROKER_ID=22
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
-      - KAFKA_CFG_LISTENERS=CLIENT://:9094,EXTERNAL://:9095
-      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://cb01.bu.ac.th:9094,EXTERNAL://cb01.bu.ac.th:9095
-      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
-    volumes:
-      - kafka_22_data:/bitnami/kafka
-    networks:
-      - test-net
-    depends_on:
-      - zookeeper
+
+volumes:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local
