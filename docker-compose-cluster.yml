@@ -21,6 +21,7 @@ services:
       - zookeeper1_data:/bitnami/zookeeper
     networks:
       - test-net
+    restart: always
   kafka1:
     image: 'bitnami/kafka:latest'
     ports:
