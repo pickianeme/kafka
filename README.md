@@ -19,8 +19,15 @@ $ docker-compose -f  docker-compose-MultiPhysical03.yml up -d
 
 $ docker-compose -f  docker-compose-MultiPhysical03.yml down
 
-## Kafdrop for Monitor Topic
+## Portainer Docker Swarm Mode
+Ref: https://docs.portainer.io/start/install/server/swarm/linux
+$curl -L https://downloads.portainer.io/ce2-16/portainer-agent-stack.yml -o portainer-agent-stack.yml
+$docker stack deploy -c portainer-agent-stack.yml portainer
+$docker ps
+### Login Portainer
+https://localhost:9443  or https://<domain name:9443>
 
+## Kafdrop for Monitor Topic
 docker run -d --rm -p 12000:12000 \
     -e KAFKA_BROKERCONNECT=<hostname>:port,<hostname>:port \
     -e JVM_OPTS="-Xms32M -Xmx64M" \
