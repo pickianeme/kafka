@@ -37,7 +37,7 @@ services:
       - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://cb01.bu.ac.th:9092,EXTERNAL://cb01.bu.ac.th:9093
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
     volumes:
-      - kafka_21_data:/bitnami/kafka
+      - kafka_1_data:/bitnami/kafka
     networks:
       - test-net
     depends_on:
