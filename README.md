@@ -1,5 +1,6 @@
 # kafka
-kafka cluster
+### How to use ###
+#git clone https://github.com/pickianeme/kafka.git
 
 Kafdrop for Monitor Topic
 docker run -d --rm -p 12000:12000 \
