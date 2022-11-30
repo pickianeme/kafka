@@ -1,0 +1,82 @@
+version: "3"
+volumes:
+  zookeeper1_data:
+    driver: local
+  kafka_1_data:
+    driver: local
+  kafka_2_data:
+    driver: local
+  kafka_3_data:
+    driver: local
+networks:
+  test-net:
+    driver: overlay
+    attachable: true
+services:
+  zookeeper1:
+    image: 'bitnami/zookeeper:latest'
+    ports:
+      - '2181:2181'
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    volumes:
+      - zookeeper1_data:/bitnami/zookeeper
+    networks:
+      - test-net
+  kafka1:
+    image: 'bitnami/kafka:latest'
+    ports:
+      - '9092:9092'
+      - '9093:9093'
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=cb01.bu.ac.th:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://cb01.bu.ac.th:9092,EXTERNAL://cb01.bu.ac.th:9093
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
+    volumes:
+      - kafka_21_data:/bitnami/kafka
+    networks:
+      - test-net
+    depends_on:
+      - zookeeper1
+  kafka2:
+    image: 'bitnami/kafka:latest'
+    ports:
+      - '9094:9094'
+      - '9095:9095'
+    environment:
+      - KAFKA_BROKER_ID=2
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=cb01.bu.ac.th:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CLIENT://:9094,EXTERNAL://:9095
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://cb01.bu.ac.th:9094,EXTERNAL://cb01.bu.ac.th:9095
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
+    volumes:
+      - kafka_2_data:/bitnami/kafka
+    networks:
+      - test-net
+    depends_on:
+      - zookeeper1
+  kafka3:
+    image: 'bitnami/kafka:latest'
+    ports:
+      - '9096:9096'
+      - '9097:9097'
+    environment:
+      - KAFKA_BROKER_ID=3
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=cb01.bu.ac.th:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CLIENT://:9096,EXTERNAL://:9097
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://cb01.bu.ac.th:9096,EXTERNAL://cb01.bu.ac.th:9097
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
+    volumes:
+      - kafka_3_data:/bitnami/kafka
+    networks:
+      - test-net
+    depends_on:
+      - zookeeper1
