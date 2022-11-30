@@ -23,6 +23,7 @@ services:
       - zookeeper1_data:/bitnami/zookeeper
     networks:
       - test-net
+    restart: always
   kafka1:
     image: 'bitnami/kafka:latest'
     ports:
@@ -40,6 +41,7 @@ services:
       - kafka_1_data:/bitnami/kafka
     networks:
       - test-net
+    restart: always
     depends_on:
       - zookeeper1
   kafka2:
@@ -59,6 +61,7 @@ services:
       - kafka_2_data:/bitnami/kafka
     networks:
       - test-net
+    restart: always
     depends_on:
       - zookeeper1
   kafka3:
@@ -78,5 +81,6 @@ services:
       - kafka_3_data:/bitnami/kafka
     networks:
       - test-net
+    restart: always
     depends_on:
       - zookeeper1
