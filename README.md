@@ -21,11 +21,14 @@ $ docker-compose -f  docker-compose-MultiPhysical03.yml down
 
 ## Portainer Docker Swarm Mode
 Ref: https://docs.portainer.io/start/install/server/swarm/linux
+
 $curl -L https://downloads.portainer.io/ce2-16/portainer-agent-stack.yml -o portainer-agent-stack.yml
+
 $docker stack deploy -c portainer-agent-stack.yml portainer
+
 $docker ps
 ### Login Portainer
-https://localhost:9443  or https://<domain name:9443>
+https://localhost:9443  or https://< domain name:9443 >
 
 ## Kafdrop for Monitor Topic
 docker run -d --rm -p 12000:12000 \
