@@ -40,6 +40,7 @@ services:
       - kafka_4_data:/bitnami/kafka
     networks:
       - test-net
+    restart: always
     #depends_on:
     #  - zookeeper1
   kafka5:
@@ -59,6 +60,7 @@ services:
       - kafka_5_data:/bitnami/kafka
     networks:
       - test-net
+    restart: always
     #depends_on:
     #  - zookeeper1
   kafka6:
@@ -78,5 +80,6 @@ services:
       - kafka_6_data:/bitnami/kafka
     networks:
       - test-net
+    restart: always
     #depends_on:
     #  - zookeeper1
