@@ -13,6 +13,12 @@ networks:
     driver: overlay
     attachable: true
 services:
+   kafka-exporter:
+    image: bitnami/kafka-exporter:latest
+    ports:
+      - "9308:9308"
+    command:
+      - --kafka.server=cb01.bu.ac.th:9093,cb01.bu.ac.th:9095,cb01.bu.ac.th:9097
   zookeeper1:
     image: 'bitnami/zookeeper:latest'
     ports:
