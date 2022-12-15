@@ -37,7 +37,7 @@ $ /usr/local/bin/docker-compose -f docker-compose-MultiPhysical02.yml down
 
 $ /usr/local/bin/docker-compose -f docker-compose-MultiPhysical03.yml up -d
 
-$ /usr/local/bin/docker-compose -f docker-compose-MultiPhysical01.yml down
+$ /usr/local/bin/docker-compose -f docker-compose-MultiPhysical03.yml down
 
 ## Portainer Docker Swarm Mode
 Ref: https://docs.portainer.io/start/install/server/swarm/linux
@@ -51,9 +51,14 @@ $docker ps
 https://localhost:9443  or https://< domain name:9443 >
 
 ## Kafdrop for Monitor Topic
-docker run -d --rm -p 12000:12000 \
+docker run -d --rm -p 11000:11000 \
 -e KAFKA_BROKERCONNECT=bk01.bu.ac.th:9095,bk01.bu.ac.th:9097,bk01.bu.ac.th:9099,bk02.bu.ac.th:9095,bk02.bu.ac.th:9097,bk02.bu.ac.th:9099,bk03.bu.ac.th:9095,bk03.bu.ac.th:9097,bk03.bu.ac.th:9099 \
--e SERVER_PORT=12000 \
+-e SERVER_PORT=11000 \
 -e JVM_OPTS="-Xms32M -Xmx64M" \
 -e SERVER_SERVLET_CONTEXTPATH="/" \
 obsidiandynamics/kafdrop
+
+## How To Test Kafka
+create Topick 
+$opt/bitnami/kafka/bin/kafka-topics.sh --create --topic quickstart-events --replication-factor 9 --partitions 9 --bootstrap-server bk01.bu.ac.th:9095
+
