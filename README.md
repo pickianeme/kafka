@@ -1,5 +1,14 @@
 # How to use 
 $git clone https://github.com/pickianeme/kafka.git
+
+## Docker Engine Install 
+## Docker initial Swarm
+$sudo docker swarm init --advertise-addr xx.xx.xx.xx
+output
+$docker swarm join --token SWMTKN-1-0utdbk2wr65lgui7wzuuyr8sivlwsqaa4hlunxwnxnrvxr5ary-cfyms7xsgj74nryunna05j3om xx.xx.xx.xx:2377
+Replace Docker Swarm join to Another host
+
+
 ## Host1
 
 $ docker-compose -f  docker-compose-MultiPhysical01.yml up -d
