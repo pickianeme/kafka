@@ -15,7 +15,7 @@ networks:
 services:
   #zookeeper1:
     #image: 'bitnami/zookeeper:latest'
-    #ports:
+    #ports:cl
     #  - '2181:2181'
     #environment:
     #  - ALLOW_ANONYMOUS_LOGIN=yes
