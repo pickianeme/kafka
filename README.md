@@ -16,6 +16,9 @@ $docker swarm join --token xxxxxxx xx.xx.xx.xx:2377
 
 Replace Docker Swarm join to Another host
 
+Promote a worker node to the manager role
+
+$docker node promote host2 host3
 
 ## Host1
 
