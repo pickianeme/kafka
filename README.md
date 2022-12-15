@@ -51,8 +51,9 @@ $docker ps
 https://localhost:9443  or https://< domain name:9443 >
 
 ## Kafdrop for Monitor Topic
-docker run -d --rm -p 12000:12000
--e KAFKA_BROKERCONNECT=bk01.bu.ac.th:9095,bk01.bu.ac.th:9097,bk01.bu.ac.th:9099,bk02.bu.ac.th:9095,bk02.bu.ac.th:9097,bk02.bu.ac.th:9099,bk03.bu.ac.th:9095,bk03.bu.ac.th:9097,bk03.bu.ac.th:9099
--e JVM_OPTS="-Xms32M -Xmx64M"
--e SERVER_SERVLET_CONTEXTPATH="/"
+docker run -d --rm -p 12000:12000 \
+-e KAFKA_BROKERCONNECT=bk01.bu.ac.th:9095,bk01.bu.ac.th:9097,bk01.bu.ac.th:9099,bk02.bu.ac.th:9095,bk02.bu.ac.th:9097,bk02.bu.ac.th:9099,bk03.bu.ac.th:9095,bk03.bu.ac.th:9097,bk03.bu.ac.th:9099 \
+-e SERVER_PORT=12000 \
+-e JVM_OPTS="-Xms32M -Xmx64M" \
+-e SERVER_SERVLET_CONTEXTPATH="/" \
 obsidiandynamics/kafdrop
