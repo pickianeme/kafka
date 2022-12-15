@@ -1,0 +1,10 @@
+version: "3"
+kafka-exporter:
+    image: bitnami/kafka-exporter:latest
+    ports:
+      - "9308:9308"
+    command:
+      - --kafka.server=bk01.bu.ac.th:9095,bk01.bu.ac.th:9097,bk01.bu.ac.th:9099,bk02.bu.ac.th:9095,bk02.bu.ac.th:9097,bk02.bu.ac.th:9099,bk03.bu.ac.th:9095,bk03.bu.ac.th:9097,bk03.bu.ac.th:9099
+    networks:
+      - kafka-net
+    restart: always
