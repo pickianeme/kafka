@@ -9,7 +9,7 @@ volumes:
   kafka_6_data:
     driver: local
 networks:
-  test-net:
+  kafka-net:
     driver: overlay
     attachable: true
 services:
@@ -26,60 +26,60 @@ services:
   kafka4:
     image: 'bitnami/kafka:latest'
     ports:
-      - '9092:9092'
-      - '9093:9093'
+      - '9094:9094'
+      - '9095:9095'
     environment:
       - KAFKA_BROKER_ID=4
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=cb01.bu.ac.th:2181
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=bk01.bu.ac.th:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
-      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://cb02.bu.ac.th:9092,EXTERNAL://cb02.bu.ac.th:9093
+      - KAFKA_CFG_LISTENERS=CLIENT://:9094,EXTERNAL://:9095
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://bk02.bu.ac.th:9094,EXTERNAL://bk02.bu.ac.th:9095
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
     volumes:
       - kafka_4_data:/bitnami/kafka
     networks:
-      - test-net
+      - kafka-net
     restart: always
     #depends_on:
     #  - zookeeper1
   kafka5:
     image: 'bitnami/kafka:latest'
     ports:
-      - '9094:9094'
-      - '9095:9095'
+      - '9096:9096'
+      - '9097:9095'
     environment:
       - KAFKA_BROKER_ID=5
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=cb01.bu.ac.th:2181
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=bk01.bu.ac.th:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
-      - KAFKA_CFG_LISTENERS=CLIENT://:9094,EXTERNAL://:9095
-      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://cb02.bu.ac.th:9094,EXTERNAL://cb02.bu.ac.th:9095
+      - KAFKA_CFG_LISTENERS=CLIENT://:9096,EXTERNAL://:9097
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://bk02.bu.ac.th:9096,EXTERNAL://bk02.bu.ac.th:9097
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
     volumes:
       - kafka_5_data:/bitnami/kafka
     networks:
-      - test-net
+      - kafka-net
     restart: always
     #depends_on:
     #  - zookeeper1
   kafka6:
     image: 'bitnami/kafka:latest'
     ports:
-      - '9096:9096'
-      - '9097:9097'
+      - '9098:9098'
+      - '9099:9099'
     environment:
       - KAFKA_BROKER_ID=6
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=cb01.bu.ac.th:2181
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=bk01.bu.ac.th:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
-      - KAFKA_CFG_LISTENERS=CLIENT://:9096,EXTERNAL://:9097
-      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://cb02.bu.ac.th:9096,EXTERNAL://cb02.bu.ac.th:9097
+      - KAFKA_CFG_LISTENERS=CLIENT://:9098,EXTERNAL://:9099
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://bk02.bu.ac.th:9098,EXTERNAL://cb02.bu.ac.th:9099
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
     volumes:
       - kafka_6_data:/bitnami/kafka
     networks:
-      - test-net
+      - kafka-net
     restart: always
     #depends_on:
     #  - zookeeper1
