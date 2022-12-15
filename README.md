@@ -1,6 +1,3 @@
-# How to use 
-$git clone https://github.com/pickianeme/kafka.git
-
 ## Docker Engine Install 
 ## Docker Compose Install
 $sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -8,6 +5,7 @@ $sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker
 $sudo chmod +x /usr/local/bin/docker-compose
 
 ## Docker initial Swarm
+
 $sudo docker swarm init --advertise-addr xx.xx.xx.xx
 
 output
@@ -19,6 +17,9 @@ Replace Docker Swarm join to Another host
 Promote a worker node to the manager role
 
 $docker node promote host2 host3
+
+# How to use 
+$git clone https://github.com/pickianeme/kafka.git
 
 ## Host1
 
