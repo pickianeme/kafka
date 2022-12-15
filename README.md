@@ -5,8 +5,9 @@ $git clone https://github.com/pickianeme/kafka.git
 ## Docker initial Swarm
 $sudo docker swarm init --advertise-addr xx.xx.xx.xx
 
-## output
-$docker swarm join --token SWMTKN-1-0utdbk2wr65lgui7wzuuyr8sivlwsqaa4hlunxwnxnrvxr5ary-cfyms7xsgj74nryunna05j3om xx.xx.xx.xx:2377
+output
+
+$docker swarm join --token xxxxxxx xx.xx.xx.xx:2377
 
 Replace Docker Swarm join to Another host
 
