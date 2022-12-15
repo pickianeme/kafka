@@ -2,6 +2,11 @@
 $git clone https://github.com/pickianeme/kafka.git
 
 ## Docker Engine Install 
+## Docker Compose Install
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
 ## Docker initial Swarm
 $sudo docker swarm init --advertise-addr xx.xx.xx.xx
 
@@ -14,22 +19,21 @@ Replace Docker Swarm join to Another host
 
 ## Host1
 
-$ docker-compose -f  docker-compose-MultiPhysical01.yml up -d
+$ /usr/local/bin/docker-compose -f docker-compose-MultiPhysical01.yml up -d
 
-
-$ docker-compose -f  docker-compose-MultiPhysical01.yml down
+$ /usr/local/bin/docker-compose -f docker-compose-MultiPhysical01.yml down
 
 ## Host2
 
-$ docker-compose -f  docker-compose-MultiPhysical02.yml up -d
+$ /usr/local/bin/docker-compose -f docker-compose-MultiPhysical02.yml up -d
 
-$ docker-compose -f  docker-compose-MultiPhysical02.yml down
+$ /usr/local/bin/docker-compose -f docker-compose-MultiPhysical02.yml down
 
 ## Host3
 
-$ docker-compose -f  docker-compose-MultiPhysical03.yml up -d
+$ /usr/local/bin/docker-compose -f docker-compose-MultiPhysical03.yml up -d
 
-$ docker-compose -f  docker-compose-MultiPhysical03.yml down
+$ /usr/local/bin/docker-compose -f docker-compose-MultiPhysical01.yml down
 
 ## Portainer Docker Swarm Mode
 Ref: https://docs.portainer.io/start/install/server/swarm/linux
