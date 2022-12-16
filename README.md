@@ -59,6 +59,16 @@ docker run -d --rm -p 11000:11000 \
 obsidiandynamics/kafdrop
 
 ## How To Test Kafka
-create Topick 
+create Topic
 $opt/bitnami/kafka/bin/kafka-topics.sh --create --topic quickstart-events --replication-factor 9 --partitions 9 --bootstrap-server bk01.bu.ac.th:9095
 
+List Topic
+$opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server bk01.bu.ac.th:9095 --list
+
+Describe Topic
+opt/bitnami/kafka/bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server bk01.bu.ac.th:9095
+
+Producer
+opt/bitnami/kafka/bin/kafka-console-producer.sh --bootstrap-server bk01.bu.ac.th:9095,bk02.bu.ac.th:9095,bk03.bu.ac.th:9095 --topic quickstart-events
+
+Consumer
