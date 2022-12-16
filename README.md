@@ -78,3 +78,6 @@ opt/bitnami/kafka/bin/kafka-console-producer.sh --bootstrap-server bk01.bu.ac.th
 
 ### Consumer
 
+opt/bitnami/kafka/bin/kafka-console-producer.sh --bootstrap-server bk01.bu.ac.th:9095,bk02.bu.ac.th:9095,bk03.bu.ac.th:9095 --topic quickstart-events
+
+opt/bitnami/kafka/bin/kafka-console-consumer.sh  --bootstrap-server bk01.bu.ac.th:9095,bk02.bu.ac.th:9095,bk03.bu.ac.th:9095 --topic quickstart-events --from-beginning
