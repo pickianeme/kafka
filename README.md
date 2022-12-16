@@ -51,7 +51,7 @@ $docker ps
 https://localhost:9443  or https://< domain name:9443 >
 
 ## Kafdrop for Monitor Topic
-docker run -d --rm -p 11000:11000 \
+docker run -d --rm -p 11000:11000 '\'
 -e KAFKA_BROKERCONNECT=bk01.bu.ac.th:9095,bk01.bu.ac.th:9097,bk01.bu.ac.th:9099,bk02.bu.ac.th:9095,bk02.bu.ac.th:9097,bk02.bu.ac.th:9099,bk03.bu.ac.th:9095,bk03.bu.ac.th:9097,bk03.bu.ac.th:9099 \
 -e SERVER_PORT=11000 \
 -e JVM_OPTS="-Xms32M -Xmx64M" \
