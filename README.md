@@ -51,7 +51,8 @@ $docker ps
 https://localhost:9443  or https://< domain name:9443 >
 
 ## Kafdrop for Monitor Topic
-docker run -d --rm -p 11000:11000 '\'
+
+$docker run -d --rm -p 11000:11000 '\'
 -e KAFKA_BROKERCONNECT=bk01.bu.ac.th:9095,bk01.bu.ac.th:9097,bk01.bu.ac.th:9099,bk02.bu.ac.th:9095,bk02.bu.ac.th:9097,bk02.bu.ac.th:9099,bk03.bu.ac.th:9095,bk03.bu.ac.th:9097,bk03.bu.ac.th:9099 \
 -e SERVER_PORT=11000 \
 -e JVM_OPTS="-Xms32M -Xmx64M" \
@@ -70,14 +71,14 @@ $opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server bk01.bu.ac.th:9095 --l
 
 ### Describe Topic
 
-opt/bitnami/kafka/bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server bk01.bu.ac.th:9095
+$opt/bitnami/kafka/bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server bk01.bu.ac.th:9095
 
 ### Producer
 
-opt/bitnami/kafka/bin/kafka-console-producer.sh --bootstrap-server bk01.bu.ac.th:9095,bk02.bu.ac.th:9095,bk03.bu.ac.th:9095 --topic quickstart-events
+$opt/bitnami/kafka/bin/kafka-console-producer.sh --bootstrap-server bk01.bu.ac.th:9095,bk02.bu.ac.th:9095,bk03.bu.ac.th:9095 --topic quickstart-events
 
 ### Consumer
 
-opt/bitnami/kafka/bin/kafka-console-producer.sh --bootstrap-server bk01.bu.ac.th:9095,bk02.bu.ac.th:9095,bk03.bu.ac.th:9095 --topic quickstart-events
+$opt/bitnami/kafka/bin/kafka-console-producer.sh --bootstrap-server bk01.bu.ac.th:9095,bk02.bu.ac.th:9095,bk03.bu.ac.th:9095 --topic quickstart-events
 
-opt/bitnami/kafka/bin/kafka-console-consumer.sh  --bootstrap-server bk01.bu.ac.th:9095,bk02.bu.ac.th:9095,bk03.bu.ac.th:9095 --topic quickstart-events --from-beginning
+$opt/bitnami/kafka/bin/kafka-console-consumer.sh  --bootstrap-server bk01.bu.ac.th:9095,bk02.bu.ac.th:9095,bk03.bu.ac.th:9095 --topic quickstart-events --from-beginning
